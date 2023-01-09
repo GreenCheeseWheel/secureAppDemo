@@ -4,7 +4,7 @@
 	</head>
 	
 	<body>
-		<p>Hello biatch</p>
+		<h1>Hello dear <span th:remove="tag" sec:authentication="name"></span>. How are you?</h1>
 		
 		<form th:action="@{/logout}" method="post">
 			<input type=submit value="logout">

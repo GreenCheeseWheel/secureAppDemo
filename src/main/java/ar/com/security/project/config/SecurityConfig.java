@@ -21,7 +21,8 @@ public class SecurityConfig {
 				.requestMatchers("/", "/home").permitAll().anyRequest().authenticated()
 				)
 			.formLogin((form) -> form.loginPage("/login").permitAll())
-			.logout((lgout) -> lgout.permitAll());
+			.logout((lgout) -> lgout.permitAll())
+			.exceptionHandling().accessDeniedPage("/access-denied");
 		
 		return http.build();
 	}
@@ -38,7 +39,7 @@ public class SecurityConfig {
 		UserDetails normalAdmin = User.withDefaultPasswordEncoder()
 				.username("admin")
 				.password("admin")
-				.roles("ADMIN")
+				.roles("USER", "ADMIN")
 				.build();
 		
 		
